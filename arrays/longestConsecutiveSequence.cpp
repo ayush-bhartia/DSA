@@ -33,7 +33,7 @@ int longestSuccessiveElements(vector<int>&a){
         st.insert(a[i]);
     }
     for(auto it:st){                     //*If considered worst case then better solution is the optimal one.
-        if(st.find(it-1)==st.end()){     //When collisions occurs worst case O(n)  TC--> O(N)
+        if(st.find(it-1)==st.end()){     //When col111lisions occurs worst case O(n)  TC--> O(N)
             cnt=1;                       //if O(1) then TC--> O(N) + O(N) = O(2N) = O(N)
             int x=it;                    //SC--> O(N) for storing set        
             while(st.find(x+1)!=st.end()){
