@@ -6,7 +6,7 @@ void insertion_sort(int arr[], int n){                  //the avg and the worst 
                                                         
         int j = i,temp;                                 
 
-        while(j>0&&arr[j-1]>arr[j]){                    
+        while(j>0&&arr[j]<arr[j-1]){                    
             // temp=arr[j-1];
             // arr[j-1]=arr[j];
             // arr[j]=temp;
