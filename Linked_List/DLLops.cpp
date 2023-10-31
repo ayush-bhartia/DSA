@@ -12,21 +12,21 @@ struct Node{
     }
 };
 
-// Node *insertDLLatpos(Node* head, int data, int pos){
-//     int posCount=1;
-//     Node *temp = new Node(data);
-//     Node *ptr= head;
-//     Node *list=head;
-//     while(posCount<=pos-2){
-//         ptr= ptr->next;
-//         posCount++;
-//     }
-//     temp->next=ptr->next;
-//     ptr->next->prev=temp;
-//     temp->prev=ptr;
-//     ptr->next=temp;
-//     return list;
-// }
+Node *insertDLLatpos(Node* head, int data, int pos){
+    int posCount=1;
+    Node *temp = new Node(data);
+    Node *ptr= head;
+    Node *list=head;
+    while(posCount<=pos-2){
+        ptr= ptr->next;
+        posCount++;
+    }
+    temp->next=ptr->next;
+    ptr->next->prev=temp;
+    temp->prev=ptr;
+    ptr->next=temp;
+    return list;
+}
 // Node *insertatEndDLL(Node *head, int data){
 //     Node *temp = new Node(data);
 //     Node *ptr= head;
@@ -38,20 +38,6 @@ struct Node{
 //     temp->prev = ptr;
 //     return list;
 // }
-Node *reverseDLL(Node *head){
-    Node *ptr;
-    while(head->next !=NULL){
-        head=head->next;
-    }
-    ptr=head;
-while (ptr!=NULL)
-{
-    ptr->next = ptr->prev;    
-    ptr->prev = ptr->next;
-    ptr = ptr->next;
-}
-return head;
-}
 
 void printList(Node *head){
     while(head!=NULL){
@@ -71,7 +57,7 @@ int main(){
 	temp2->prev=temp1;
     temp2->next=temp3;
     temp3->prev=temp2;
-	head=reverseDLL(head);
+	head=insertDLLatpos(head,90,3);
 	printList(head);
     return 0;
 };  
