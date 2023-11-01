@@ -12,11 +12,20 @@ struct Node{
     }
 };
 
-Node *deleteheadDLL(Node *head){
+// Node *deleteheadDLL(Node *head){
     
-    head->next->prev = NULL;
-    head = head ->next;
-    return head;
+//     head->next->prev = NULL;
+//     head = head ->next;
+//     return head;
+// }
+
+Node *deleteLastDLL(Node *head){
+    Node *curr=head;
+    while(head->next->next!=NULL){
+        head=head->next;
+    }
+    head->next=NULL;
+    return curr;
 }
 
 void printList(Node *head){
@@ -37,7 +46,8 @@ int main(){
 	temp2->prev=temp1;
     temp2->next=temp3;
     temp3->prev=temp2;
-	head=deleteheadDLL(head);
+	// head=deleteheadDLL(head);
+    head=deleteLastDLL(head);
 	printList(head);
     return 0;
 }
