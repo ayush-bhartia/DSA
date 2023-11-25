@@ -11,18 +11,20 @@ struct Node{
     }
 };
 
-Node* reverse(Node *head){
-    Node *curr = head;
-    Node *prev = NULL;
-    Node *next=curr->next;
-    while(curr!=NULL){
-        next=curr->next;
-        curr->next=prev;
-        prev=curr;
-        curr=next;
+Node* removeDups(Node *head){
+    Node *curr=head;
+    while(curr!=NULL && curr->next!=NULL){
+        if(curr->data==curr->next->data){
+            Node *temp= curr->next;
+            curr->next=curr->next->next;
+            delete(temp);
+        }
+        else{
+            curr=curr->next;
+        }
     }
-    return prev;
-};
+    return head;
+}
 
 void print(Node *head){
     while(head!=NULL){
@@ -34,8 +36,8 @@ void print(Node *head){
 int main(){
     Node *head = new Node(10);
     head -> next = new Node(20);
-    head -> next -> next = new Node(30);
+    head -> next -> next = new Node(20);
     head -> next -> next -> next = new Node(40);    
-    head = reverse(head);
+    head = removeDups(head);
     print(head);
 }
